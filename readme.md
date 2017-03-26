@@ -1,18 +1,43 @@
 # vlc-deck
 Remote Control for VideoLAN (VLC)
 
+* watch video web streams with VLC
+* watch files from disk with VLC
+* use a USB Infrared Control to switch Channels
+
 *Matthias Kallenbach, Spring 2017*
 
-## Usage
+At the moment my USB IR Control Dingsbums is on the way to me. For this Reason 
 
-    var Vlc = require('./lib/vlc.js');
+For testing the Streams, run:
+ 
+    cd D:\\some\\where\\on\\my\\disk\\vlc-deck
+    node node/app.js
+    
+This test:
+
+* Reads the `conf/data.json` as data
+* Adds the data to the VLC Playlist
+* Adds a given Folder to the VLC Playlist
+* Skip to the Next or to the Previous Playlist Item
+* Stop or Pause Playing
+* Flush VLC Playlist
+* Add one Item to the VLC Playlist and play them instantly by flushing the Playlist before.
+* Play a special Playlist Entry by Id. Special Match Making between VLC Playlist Entries and the JSON Data.
+
+## Usage
+### Installation
+    npm install vlc-dev -S
+    
+### Use
+    var Vlc = require('vlc-deck');
     var Player = new Vlc({
         ...
     );
         
 On create the vlc binary starts instantly.
 
-##Config:
+## Config:
 
     conf/globals.js
     
@@ -66,11 +91,11 @@ play mode folder recursive
     play_folder_recursive : true
     
     
-##Stations Stream URLs
+## Stations Stream URLs
 
     config/data.json
     
-##Single Play
+## Single Play
 
     config/only.json
 

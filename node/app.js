@@ -1,4 +1,4 @@
-var Vlc = require('./lib/vlc.js');
+var Vlc = require('./lib/vlc-deck.js');
 
 var App = function (args) {
 

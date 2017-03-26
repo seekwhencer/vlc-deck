@@ -1,11 +1,25 @@
 {
   "name": "vlc-deck",
   "version": "0.0.1",
-  "description": "",
-  "main": "node/app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Node Module to control VLC over http interface.",
+  "homepage": "http://github.com/seekwhencer/vlc-deck",
+  "keywords": [
+    "vlc",
+    "videolan",
+    "remote control",
+    "http interface"
+  ],
+  "author": "Matthias Kallenbach (https://github.com/seekwhencer)",
+  "contributors": [
+    "Matthias Kallenbach (https://github.com/seekwhencer)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/seekwhencer/vlc-deck"
   },
-  "author": "",
-  "license": "ISC",
+  "bugs": {
+    "url": "http://github.com/seekwhencer/vlc-deck/issues"
+  },
+  "main": "lib/vlc-deck.js",
+  "license": "MIT"
 }
