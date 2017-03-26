@@ -1,6 +1,6 @@
 {
   "name": "vlc-deck",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node Module to control VLC over http interface.",
   "homepage": "http://github.com/seekwhencer/vlc-deck",
   "keywords": [
