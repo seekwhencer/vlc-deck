@@ -7,7 +7,7 @@ Remote Control for VideoLAN (VLC)
 
 *Matthias Kallenbach, Spring 2017*
 
-At the moment my USB IR Control Dingsbums is on the way to me. For this Reason 
+At the moment my USB IR Control Dingsbums is on the way to me. For this Reason i will updating the module as soon as possible!
 
 For testing the Streams, run:
  
@@ -27,9 +27,11 @@ This test:
 
 ## Usage
 ### Installation
-    npm install vlc-dev -S
+    
+    npm install vlc-deck -S
     
 ### Use
+    
     var Vlc = require('vlc-deck');
     var Player = new Vlc({
         ...
