@@ -39,13 +39,13 @@ This test:
 ```js
     var Vlc = require('vlc-deck');
     var Player = new Vlc({
-        ...
-    );
+        // ... options
+    });
 ```
 
 On create the vlc binary starts instantly.
 
-## Config:
+## Config = Options:
 
 ```bash
     conf/globals.js
