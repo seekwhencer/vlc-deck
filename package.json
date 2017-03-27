@@ -20,6 +20,6 @@
   "bugs": {
     "url": "http://github.com/seekwhencer/vlc-deck/issues"
   },
-  "main": "lib/vlc-deck.js",
+  "main": "node/lib/vlc-deck.js",
   "license": "MIT"
 }

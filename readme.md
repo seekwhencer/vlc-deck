@@ -3,7 +3,7 @@ Remote Control for VideoLAN (VLC)
 
 * watch video web streams with VLC
 * watch files from disk with VLC
-* use a USB Infrared Control to switch Channels
+* use a USB Infrared Control to switch Channels ( IN PROGRESS, NOT INCLUDED )
 
 *Matthias Kallenbach, Spring 2017*
 
@@ -30,6 +30,8 @@ This test:
 ## Usage
 ### Installation
 
+Install VideoLAN VLC on your Computer. Then in your Project Folder: 
+
 ```bash    
     npm install vlc-deck -S
 ``` 
@@ -45,7 +47,7 @@ This test:
 
 On create the vlc binary starts instantly.
 
-## Config = Options:
+## Globals › Defaults › Config › Options:
 
 ```bash
     conf/globals.js
