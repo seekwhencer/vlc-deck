@@ -5,27 +5,7 @@ Remote Control for VideoLAN (VLC)
 * watch files from disk with VLC
 * use a USB Infrared Control to switch Channels ( IN PROGRESS, NOT INCLUDED )
 
-*Matthias Kallenbach, Spring 2017*
-
 At the moment my USB IR Control Dingsbums is on the way to me. For this Reason i will updating the module as soon as possible!
-
-For testing the Streams, run:
-
-```js
-    cd D:\\some\\where\\on\\my\\disk\\vlc-deck
-    node node/app.js
-```
-
-This test:
-
-* Reads the `conf/data.json` as data
-* Adds the data to the VLC Playlist
-* Adds a given Folder to the VLC Playlist
-* Skip to the Next or to the Previous Playlist Item
-* Stop or Pause Playing
-* Flush VLC Playlist
-* Add one Item to the VLC Playlist and play them instantly by flushing the Playlist before.
-* Play a special Playlist Entry by Id. Special Match Making between VLC Playlist Entries and the JSON Data.
 
 ## Usage
 ### Installation
@@ -45,9 +25,28 @@ Install VideoLAN VLC on your Computer. Then in your Project Folder:
     });
 ```
 
-On create the vlc binary starts instantly.
+On create the vlc binary starts instantly at the moment. 
 
-## Globals › Defaults › Config › Options:
+For testing the Streams, run:
+
+```js
+    cd D:\\some\\where\\on\\my\\disk\\vlc-deck
+    node node/app.js
+```
+
+This test:
+
+* Reads the `conf/data.json` as data
+* Adds the data to the VLC Playlist
+* Adds a given Folder to the VLC Playlist
+* Skip to the Next or to the Previous Playlist Item
+* Stop or Pause Playing
+* Flush VLC Playlist
+* Add one Item to the VLC Playlist and play them instantly by flushing the Playlist before.
+* Play a special Playlist Entry by Id. Special Match Making between VLC Playlist Entries and the JSON Data.
+
+
+## Globals › Config › Options
 
 ```bash
     conf/globals.js

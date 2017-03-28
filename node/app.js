@@ -1,5 +1,6 @@
-var Vlc = require('./lib/vlc-deck.js');
+'use strict';
 
+var Vlc = require('./lib/vlc-deck.js');
 var App = function (args) {
 
     var that = this;

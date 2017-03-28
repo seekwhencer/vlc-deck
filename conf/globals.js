@@ -20,13 +20,25 @@ module.exports = {
     // the local vlc binary name
     bin: 'vlc.exe',
 
-    // delaying after adding a streaming url entry to the vlc playlist
+    // the path to the json files
+    json_path : '../../conf/',
+
+    // key value map {"Name" : "uri", "Other Name" : "uri" }
+    json_data : 'data.json',
+
+    // same as data.json, but one row
+    json_only : 'only.json',
+
+    // delay after adding a streaming url entry to the vlc playlist
     delay_add_playlist: 50,
 
     // delay for adding from folder
     delay_add_folder: 50,
 
-    // delay beween the vlc binary start and the first action
+    // start playing or not, false = autoplay
+    silent : false,
+
+    // delay between the vlc binary starts and the first action
     wait_before_connect: 2000,
 
     // delay for the skip (next playlist entry) loop (testing)
@@ -36,10 +48,17 @@ module.exports = {
     play: 'playlist',
 
     // the folder who played in folder mode
-    play_folder: 'D:\\Data\\video\\Star Trek - Enterprise',
+    play_folder: 'D:\\somewhere\\on\\my\\disk',
 
     // play mode folder recursive
-    play_folder_recursive : true
+    play_folder_recursive : true,
+
+    // function after vlc starts
+    //onInit : null,
+    onInit : function(){
+        console.log('ON INIT');
+    },
+
 
 
 };

@@ -1,18 +1,22 @@
 /**
- * VLC Player Module
+ * vlc-deck
  *
- *  Matthias Kallenbach
+ * A VideoLAN (VLC) Remote Control Module
+ * Controls VLC with http Interface
+ *
+ * Matthias Kallenbach
  * Spring 2017
- *
  *
  */
 
-var spawn = require('child_process').spawn;
-var fs = require('fs');
-var http = require('http');
-var crypto = require('crypto');
+const spawn = require('child_process').spawn;
+const fs = require('fs');
+const http = require('http');
+const crypto = require('crypto');
 
-var Config = require('../../conf/globals.js');
+
+const Config = require('../../conf/globals.js');
+var VlcEvent = require('../lib/vlc-event.js');
 
 module.exports = function (args) {
 
@@ -21,6 +25,7 @@ module.exports = function (args) {
     //------------------------------------------
 
     this.process = null;    // the vlc process with spawn
+    this.runner = null;     // events
     this.data = [];         // all items i a row
     this.current = null;    // the current item from vlc playlist mapped from that.data
     this.options = {};      // the options object
@@ -35,14 +40,29 @@ module.exports = function (args) {
         that.options = that.defaults;
     }
 
-
-
     //------------------------------------------
 
     /**
      * On Construct
      */
     this.init = function () {
+
+
+        that.runner = new VlcEvent({});
+
+        that.runner.on('run',function(){
+            console.log('RUN');
+        });
+
+
+        that.runner.on('done',function(){
+
+        });
+
+        that.runner.on('idle',function(){
+
+        });
+
 
         that.fetchData(function () {
             that.startVLC();
@@ -54,8 +74,16 @@ module.exports = function (args) {
                     that.setPlaylistFromFolder(that.options.play_folder, true, function () {
                         that.setPlaylistFromData(that.options.delay_add_folder, function () {
                             that.getPlaylist();
-                            that.play();
-                            that.skipLoop();
+
+                            if (that.options.silent === true)
+                                return; // break the chain
+
+                            if(typeof that.options.onInit === 'function' ) {
+                                that.options.onInit();
+                            } else {
+                                that.play();
+                                that.skipLoop();
+                            }
                         });
                     });
                 }
@@ -63,18 +91,26 @@ module.exports = function (args) {
                 // as playlist or only
                 if (that.options.play === 'playlist' || that.options.play === 'only') {
                     that.setPlaylistFromData(that.options.delay_add_playlist, function () {
-                        that.play();
-                        if(that.options.play === 'playlist')
-                            that.skipLoop();
+                        if (that.options.silent === true)
+                            return; // break the chain
+
+                        if(typeof that.options.onInit === 'function' ) {
+                            that.options.onInit();
+                        } else {
+                            that.play();
+                            if (that.options.play === 'playlist')
+                                that.skipLoop();
+                        }
+
                     });
                 }
 
-            },that.options.wait_before_connect);
+            }, that.options.wait_before_connect);
 
         });
     };
 
-     /**
+    /**
      * starts vlc binary
      */
     this.startVLC = function () {
@@ -366,13 +402,13 @@ module.exports = function (args) {
      * @param cb
      */
     this.fetchData = function (cb) {
-        if(that.options.play==='only') {
-            var file = 'only.json';
+        if (that.options.play === 'only') {
+            var file = that.options.json_only;
         } else {
-            var file = 'data.json';
+            var file = that.options.json_data;
         }
 
-        var data = require('../../conf/'+file);
+        var data = require(that.options.json_path + '' + file);
         for (var key in data) {
             var x = 'h' + crypto.createHash('md5').update(data[key]).digest('hex');
             that.data[x] = {
